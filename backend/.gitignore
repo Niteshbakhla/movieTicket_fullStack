@@ -1,0 +1,24 @@
+# Node modules folder - always ignore this
+node_modules/
+
+# Environment variables - never push this!
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+
+# Optional: IDE settings (if you're using VSCode or other editors)
+.vscode/
+.idea/
+
+# Optional: Dist or build folders (if you're compiling)
+dist/
+build/
+
+# Optional: Cache files
+.cache/
