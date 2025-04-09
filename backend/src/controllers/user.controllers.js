@@ -1,3 +1,4 @@
+import _config from "../config/config.js";
 import { User } from "../models/user.models.js";
 import jwt from "jsonwebtoken";
 
@@ -59,8 +60,13 @@ export const login = async (req, res) => {
                                     email: isUserExist.email,
                                     role: isUserExist.role
                         }
-                        const token = jwt.sign(payload, process.env.JWT_SECRET);
-                        res.cookie("token", token)
+                        const token = jwt.sign(payload, _config.JWT_SECRET);
+                        res.cookie("token", token, {
+                                    httpOnly: true,
+                                    secure: true,
+                                    sameSite: "Strict",
+                                    maxAge: 24 * 60 * 60 * 1000,
+                        });
                         return res.status(200).json({
                                     success: true,
                                     message: "Login successfully",
