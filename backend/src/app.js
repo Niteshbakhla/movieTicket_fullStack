@@ -4,18 +4,13 @@ import movieRouter from "./routes/movie.routes.js"
 import bookingRouter from "./routes/booking.routes.js"
 import cookieParser from "cookie-parser";
 import cors from "cors"
+import _config from "./config/config.js";
 
 export const app = express();
-const allowedOrigins = [process.env.FRONTEND_URL];
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",");
 
 app.use(cors({
-            origin: function (origin, callback) {
-                        if (allowedOrigins.includes(origin)) {
-                                    callback(null, true)
-                        } else {
-                                    callback(new Error("Not allowed by CORS"))
-                        }
-            },
+            origin: _config.FRONTEND_URL,
             credentials: true
 }))
 app.use(cookieParser())
