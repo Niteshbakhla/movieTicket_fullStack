@@ -14,7 +14,7 @@ const Navbar = () => {
 
             const hideNavbarPaths = ["/login", "/signup"];
 
-            const logout = async () => {
+                        const logout = async () => {
                         try {
                                     const { data } = await axios.get(`${API_BASE}/api/auth/logout`, {
                                                 withCredentials: true,
