@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import _config from "../config/config";
+import _config from "../config/config.js";
 
 export const authenticate = async (req, res, next) => {
             try {
