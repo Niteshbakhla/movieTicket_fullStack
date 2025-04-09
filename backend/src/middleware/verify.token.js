@@ -1,5 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import _config from "../config/config";
 
 export const authenticate = async (req, res, next) => {
             try {
@@ -8,7 +9,7 @@ export const authenticate = async (req, res, next) => {
                                     return res.status(401).json({ success: false, message: "Unauthorized" })
                         }
 
-                        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+                        const decoded = jwt.verify(token, _config.JWT_SECRET);
                         req.user = decoded
                         next()
             } catch (error) {
