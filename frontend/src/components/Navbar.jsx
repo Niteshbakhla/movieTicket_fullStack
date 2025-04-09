@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/AuthContext";
 import { API_BASE } from "../config";
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
 
             const hideNavbarPaths = ["/login", "/signup"];
 
-                        const logout = async () => {
+            const logout = async () => {
                         try {
                                     const { data } = await axios.get(`${API_BASE}/api/auth/logout`, {
                                                 withCredentials: true,
