@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useRazorpay } from "react-razorpay"
 import toast from "react-hot-toast";
 import BookingSuccess from "./BookingSuccess";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/AuthContext";
 import { API_BASE } from "../config";
 
 const BookingPage = () => {
