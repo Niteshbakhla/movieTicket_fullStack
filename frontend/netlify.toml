@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  base = "."  # Optional, sets root directory if you're inside frontend
 
 [[redirects]]
   from = "/*"
