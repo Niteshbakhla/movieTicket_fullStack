@@ -34,16 +34,7 @@ const BookingSuccess = ({ booking }) => {
 
             const formatDate = (dateStr) => new Date(dateStr).toLocaleString();
 
-            const cancelBooking = async () => {
-                        try {
-                                    const { data } = await axios.get(`${API_BASE}/api/movies/bookings/${booking._id}`, { withCredentials: true })
-                                    toast.success(data.message);
-                                    navigate("/");
-                        } catch (error) {
-                                    toast.error(error.response?.data.message)
-                                    console.log(error)
-                        }
-            }
+
 
             return (
                         <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
@@ -87,12 +78,6 @@ const BookingSuccess = ({ booking }) => {
                                                                         </div>
                                                             </div>
                                                 </div>
-                                                <button
-                                                            className="w-full px-6 py-3 mb-4 active:scale-[0.9] bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
-                                                            onClick={cancelBooking}
-                                                >
-                                                            Cancel Booking
-                                                </button>
                                     </div>
                         </div>
             );
