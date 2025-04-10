@@ -12,7 +12,9 @@ const Signup = () => {
             const handleSubmit = async (e) => {
                         e.preventDefault();
                         await signup(name, email, password);
-
+                        setEmail("")
+                        setPassword("")
+                        setName("")
                         if (!error) navigate("/signup");
             };
 
