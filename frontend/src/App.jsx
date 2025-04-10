@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AuthProvider } from './context/AuthContext'
 import Login from './pages/Login'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -9,8 +9,10 @@ import MovieDetail from './pages/MovieDetail'
 import BookingPage from './pages/BookingPage'
 
 const App = () => {
-
-  
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) navigate("/login")
+  }, [])
   return (
     <AuthProvider>
       <Router>
