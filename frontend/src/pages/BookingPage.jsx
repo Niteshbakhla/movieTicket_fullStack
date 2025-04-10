@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useRazorpay } from "react-razorpay"
 import toast from "react-hot-toast";
 import BookingSuccess from "./BookingSuccess";
@@ -9,6 +9,7 @@ import { API_BASE } from "../config";
 
 const BookingPage = () => {
             const { movieId, showId } = useParams();
+            const navigate = useNavigate();
             const [data, setData] = useState([]);
             const [selectedShowtime, setSelectedShowtime] = useState(null);
             const [numTickets, setNumTickets] = useState(1);
@@ -100,7 +101,7 @@ const BookingPage = () => {
                         try {
                                     const { data } = axios.get(`${API_BASE}/api/movie/${id}`, { withCredentials: true })
                                     toast.success(data.message)
-
+                                    navigate("/")
                         } catch (error) {
                                     console.error("Cancel Booking Error", error.message)
                         }
@@ -153,13 +154,13 @@ const BookingPage = () => {
                                                             </p>
 
                                                             <button
-                                                                        className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
+                                                                        className="w-full px-6 py-3 mb-4 active:scale[0.9] bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
                                                                         onClick={paymentNow}
                                                             >
                                                                         Pay Now
                                                             </button>
                                                             <button
-                                                                        className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
+                                                                        className="w-full px-6 py-3 active:scale-[0.9] bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
                                                                         onClick={cancelBooking}
                                                             >
                                                                         Cancel Booking
