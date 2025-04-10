@@ -11,7 +11,7 @@ const Navbar = () => {
             const token = localStorage.getItem("token");
             const [isHistoryOpen, setIsHistoryOpen] = useState(false);
             const [bookings, setBookings] = useState([]);
-            const { searchTerm, setSearchTerm, setFilteredMove, setMovies } = useAuth();
+            const { searchTerm, setSearchTerm, setMovies } = useAuth();
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
@@ -91,7 +91,7 @@ const Navbar = () => {
                                                             className="md:hidden text-white focus:outline-none"
                                                             onClick={() => {
                                                                         setIsMobileMenuOpen(!isMobileMenuOpen);
-                                                                        setIsHistoryOpen(false); // Close history when toggling menu
+                                                                        setIsHistoryOpen(false); 
                                                             }}
                                                 >
                                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,9 +99,9 @@ const Navbar = () => {
                                                             </svg>
                                                 </button>
 
-                                                {/* Desktop Menu */}
+                                               
                                                 <div className="hidden md:flex items-center gap-6 flex-1 justify-end">
-                                                            {/* Search */}
+                                                            
                                                             <div className="max-w-md w-full">
                                                                         <div className="relative">
                                                                                     <input
@@ -118,7 +118,7 @@ const Navbar = () => {
                                                                         </div>
                                                             </div>
 
-                                                            {/* Auth + History */}
+                                                          
                                                             {token ? (
                                                                         <>
                                                                                     {/* History Dropdown */}

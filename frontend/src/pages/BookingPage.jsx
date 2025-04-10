@@ -17,8 +17,6 @@ const BookingPage = () => {
             const [confirmData, setConfirmData] = useState([]);
             const { Razorpay } = useRazorpay();
 
-            const { setShowDate } = useAuth()
-
 
             const bookingMovie = async () => {
                         try {
@@ -89,7 +87,6 @@ const BookingPage = () => {
 
                                     const rzp = new Razorpay(RazorpayOrderOptions)
                                     rzp.on("payment.failed", function (response) {
-                                    
                                                 toast.error("Payment failed or cancelled.");
                                     });
                                     rzp.open();
@@ -98,6 +95,16 @@ const BookingPage = () => {
                                     toast.error(error.response.data.error)
                         }
             };
+
+            const cancelBooking = async (id) => {
+                        try {
+                                    const { data } = axios.get(`${API_BASE}/api/movie/${id}`, { withCredentials: true })
+                                    toast.success(data.message)
+
+                        } catch (error) {
+                                    console.error("Cancel Booking Error", error.message)
+                        }
+            }
 
             if (!movieId) return (
                         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
@@ -150,6 +157,12 @@ const BookingPage = () => {
                                                                         onClick={paymentNow}
                                                             >
                                                                         Pay Now
+                                                            </button>
+                                                            <button
+                                                                        className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
+                                                                        onClick={cancelBooking}
+                                                            >
+                                                                        Cancel Booking
                                                             </button>
                                                 </div>
                                     ) : (
