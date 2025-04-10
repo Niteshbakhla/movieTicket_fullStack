@@ -86,51 +86,39 @@ const Navbar = () => {
                                                             <span className="text-yellow-400">🎬</span> MovieTime
                                                 </Link>
 
-                                                {/* Hamburger Menu (only visible on mobile) */}
+                                                {/* Hamburger Menu */}
                                                 <button
                                                             className="md:hidden text-white focus:outline-none"
-                                                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                                            onClick={() => {
+                                                                        setIsMobileMenuOpen(!isMobileMenuOpen);
+                                                                        setIsHistoryOpen(false); // Close history when toggling menu
+                                                            }}
                                                 >
-                                                            <svg
-                                                                        className="w-6 h-6"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        viewBox="0 0 24 24"
-                                                            >
+                                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                                                             </svg>
                                                 </button>
 
                                                 {/* Desktop Menu */}
                                                 <div className="hidden md:flex items-center gap-6 flex-1 justify-end">
-                                                            {/* Search Bar */}
+                                                            {/* Search */}
                                                             <div className="max-w-md w-full">
                                                                         <div className="relative">
                                                                                     <input
                                                                                                 type="text"
                                                                                                 placeholder="Search movies..."
-                                                                                                className="w-full px-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"
+                                                                                                className="w-full px-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:ring-2 focus:ring-yellow-400 focus:outline-none transition-all duration-300"
                                                                                                 onChange={(e) => setSearchTerm(e.target.value)}
                                                                                     />
                                                                                     <span className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                                                                                                <svg
-                                                                                                            className="w-5 h-5 text-gray-400"
-                                                                                                            fill="none"
-                                                                                                            stroke="currentColor"
-                                                                                                            viewBox="0 0 24 24"
-                                                                                                >
-                                                                                                            <path
-                                                                                                                        strokeLinecap="round"
-                                                                                                                        strokeLinejoin="round"
-                                                                                                                        strokeWidth={2}
-                                                                                                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                                                                                            />
+                                                                                                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                                                                 </svg>
                                                                                     </span>
                                                                         </div>
                                                             </div>
 
-                                                            {/* Buttons */}
+                                                            {/* Auth + History */}
                                                             {token ? (
                                                                         <>
                                                                                     {/* History Dropdown */}
@@ -152,16 +140,13 @@ const Navbar = () => {
                                                                                                                                                             <div key={booking._id} className="p-3 border-b border-gray-200 hover:bg-gray-50 transition-colors duration-200">
                                                                                                                                                                         <p className="text-sm text-gray-800 font-medium">{booking.movieTitle}</p>
                                                                                                                                                                         <p className="text-xs text-gray-600">
-                                                                                                                                                                                    {new Date(booking.createdAt).toLocaleDateString()} •{" "}
-                                                                                                                                                                                    {booking.numberOfTickets} tickets
+                                                                                                                                                                                    {new Date(booking.createdAt).toLocaleDateString()} • {booking.numberOfTickets} tickets
                                                                                                                                                                         </p>
                                                                                                                                                                         <p className="text-xs text-green-600">₹{booking.totalPrice}</p>
                                                                                                                                                             </div>
                                                                                                                                                 ))
                                                                                                                                     ) : (
-                                                                                                                                                <div className="p-4 text-center text-gray-500 text-sm">
-                                                                                                                                                            No booking history yet
-                                                                                                                                                </div>
+                                                                                                                                                <div className="p-4 text-center text-gray-500 text-sm">No booking history yet</div>
                                                                                                                                     )}
                                                                                                                         </div>
                                                                                                             </div>
@@ -181,8 +166,8 @@ const Navbar = () => {
                                                                                     <Link
                                                                                                 to="/login"
                                                                                                 className={`relative px-3 py-1 rounded-full font-medium text-lg transition-all duration-300 ${location.pathname === "/login"
-                                                                                                            ? "bg-yellow-400 text-gray-900 hover:bg-yellow-400"
-                                                                                                            : "text-gray-200 hover:text-white after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-yellow-400 after:bottom-[-4px] after:left-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                                                                                                        ? "bg-yellow-400 text-gray-900 hover:bg-yellow-400"
+                                                                                                                        : "text-gray-200 hover:text-white after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-yellow-400 after:bottom-[-4px] after:left-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
                                                                                                             }`}
                                                                                     >
                                                                                                 Login
@@ -190,8 +175,8 @@ const Navbar = () => {
                                                                                     <Link
                                                                                                 to="/signup"
                                                                                                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${location.pathname === "/signup"
-                                                                                                            ? "bg-yellow-400 text-gray-900 hover:bg-yellow-400"
-                                                                                                            : "bg-yellow-400 text-gray-900 hover:bg-yellow-300 hover:shadow-md transform hover:-translate-y-0.5"
+                                                                                                                        ? "bg-yellow-400 text-gray-900 hover:bg-yellow-400"
+                                                                                                                        : "bg-yellow-400 text-gray-900 hover:bg-yellow-300 hover:shadow-md transform hover:-translate-y-0.5"
                                                                                                             }`}
                                                                                     >
                                                                                                 Signup
@@ -204,12 +189,14 @@ const Navbar = () => {
                                     {/* Mobile Menu */}
                                     {isMobileMenuOpen && (
                                                 <div className="md:hidden mt-4 space-y-4">
+                                                            {/* Search */}
                                                             <input
                                                                         type="text"
                                                                         placeholder="Search movies..."
-                                                                        className="w-full px-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-400 border-none focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"
+                                                                        className="w-full px-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:ring-2 focus:ring-yellow-400 focus:outline-none transition-all duration-300"
                                                                         onChange={(e) => setSearchTerm(e.target.value)}
                                                             />
+
                                                             {token ? (
                                                                         <>
                                                                                     <button
@@ -218,19 +205,26 @@ const Navbar = () => {
                                                                                     >
                                                                                                 History
                                                                                     </button>
-                                                                                    {isHistoryOpen && bookings.length > 0 && (
+
+                                                                                    {/* Mobile History Dropdown */}
+                                                                                    {isHistoryOpen && (
                                                                                                 <div className="bg-white text-gray-800 rounded p-3 space-y-2 max-h-60 overflow-y-auto">
-                                                                                                            {bookings.map((booking) => (
-                                                                                                                        <div key={booking._id} className="border-b pb-2">
-                                                                                                                                    <p className="font-medium">{booking.movieTitle}</p>
-                                                                                                                                    <p className="text-xs text-gray-600">
-                                                                                                                                                {new Date(booking.createdAt).toLocaleDateString()} • {booking.numberOfTickets} tickets
-                                                                                                                                    </p>
-                                                                                                                                    <p className="text-xs text-green-600">₹{booking.totalPrice}</p>
-                                                                                                                        </div>
-                                                                                                            ))}
+                                                                                                            {bookings.length > 0 ? (
+                                                                                                                        bookings.map((booking) => (
+                                                                                                                                    <div key={booking._id} className="border-b pb-2">
+                                                                                                                                                <p className="font-medium">{booking.movieTitle}</p>
+                                                                                                                                                <p className="text-xs text-gray-600">
+                                                                                                                                                            {new Date(booking.createdAt).toLocaleDateString()} • {booking.numberOfTickets} tickets
+                                                                                                                                                </p>
+                                                                                                                                                <p className="text-xs text-green-600">₹{booking.totalPrice}</p>
+                                                                                                                                    </div>
+                                                                                                                        ))
+                                                                                                            ) : (
+                                                                                                                        <p className="text-sm text-gray-500">No booking history yet</p>
+                                                                                                            )}
                                                                                                 </div>
                                                                                     )}
+
                                                                                     <Link
                                                                                                 onClick={logout}
                                                                                                 to="/login"
