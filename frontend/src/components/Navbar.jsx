@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { API_BASE } from "../config";
 
+
 const Navbar = () => {
             const location = useLocation();
             const token = localStorage.getItem("token");
