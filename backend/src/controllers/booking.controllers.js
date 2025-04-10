@@ -52,7 +52,8 @@ export const bookTicket = async (req, res) => {
 
 export const getBookings = async (req, res) => {
             try {
-                        const bookings = await Booking.find({ userId: req.user.id }).populate("movieId");
+                        const bookings = await Booking.find({ userId: req.user.id }).populate("movieId").sort({ createdAt: -1 })
+
 
                         return res.status(200).json({ success: true, message: "Booking Successful", bookings });
             } catch (error) {
