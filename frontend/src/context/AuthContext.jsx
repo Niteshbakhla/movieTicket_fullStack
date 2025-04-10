@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
                                     setLoading(true)
                                     setError(null)
                                     const userData = { name, email, password };
-                                    const { data } = await axios.post(`${API_BASEL}/api/auth/register`, userData)
+                                    const { data } = await axios.post(`${API_BASE}/api/auth/register`, userData)
                                     setUser(data)
                                     toast.success(data.message)
 
