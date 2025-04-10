@@ -97,15 +97,6 @@ const BookingPage = () => {
                         }
             };
 
-            const cancelBooking = async (id) => {
-                        try {
-                                    const { data } = axios.get(`${API_BASE}/api/movie/${id}`, { withCredentials: true })
-                                    toast.success(data.message)
-                                    navigate("/")
-                        } catch (error) {
-                                    console.error("Cancel Booking Error", error.message)
-                        }
-            }
 
             if (!movieId) return (
                         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
@@ -158,12 +149,6 @@ const BookingPage = () => {
                                                                         onClick={paymentNow}
                                                             >
                                                                         Pay Now
-                                                            </button>
-                                                            <button
-                                                                        className="w-full px-6 py-3 active:scale-[0.9] bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
-                                                                        onClick={cancelBooking}
-                                                            >
-                                                                        Cancel Booking
                                                             </button>
                                                 </div>
                                     ) : (
