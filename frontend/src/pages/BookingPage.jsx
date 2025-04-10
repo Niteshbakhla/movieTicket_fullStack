@@ -88,6 +88,10 @@ const BookingPage = () => {
                                     };
 
                                     const rzp = new Razorpay(RazorpayOrderOptions)
+                                    rzp.on("payment.failed", function (response) {
+                                    
+                                                toast.error("Payment failed or cancelled.");
+                                    });
                                     rzp.open();
                         } catch (error) {
                                     console.log("Payment error:", error)
