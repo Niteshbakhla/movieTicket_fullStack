@@ -154,7 +154,7 @@ const BookingPage = () => {
                                                             </p>
 
                                                             <button
-                                                                        className="w-full px-6 py-3 mb-4 active:scale[0.9] bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
+                                                                        className="w-full px-6 py-3 mb-4 active:scale-[0.9] bg-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
                                                                         onClick={paymentNow}
                                                             >
                                                                         Pay Now
