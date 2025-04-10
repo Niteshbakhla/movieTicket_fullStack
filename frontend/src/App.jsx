@@ -9,10 +9,7 @@ import MovieDetail from './pages/MovieDetail'
 import BookingPage from './pages/BookingPage'
 
 const App = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!localStorage.getItem("token")) navigate("/login")
-  }, [])
+
   return (
     <AuthProvider>
       <Router>
