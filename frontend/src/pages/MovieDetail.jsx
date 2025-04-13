@@ -31,7 +31,7 @@ const MovieDetail = () => {
                                     <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
                                                 {/* Image Placeholder */}
                                                 <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-                                                            <span className="text-gray-400 text-sm">Movie Poster Coming Soon</span>
+                                                            <img className="w-full h-full" src={movie.image} alt="" />
                                                 </div>
 
                                                 <div className="p-6">
