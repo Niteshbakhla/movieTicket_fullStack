@@ -39,10 +39,8 @@ const Home = () => {
                                                                         className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                                                             >
                                                                         {/* Image Placeholder */}
-                                                                        <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                                                                                    <span className="text-gray-400 text-sm">
-                                                                                                Image Coming Soon
-                                                                                    </span>
+                                                                        <div className="w-full h-48 bg-gray-800 flex items-center justify-center">
+                                                                                    <img className="w-full h-full" src={movie.image} alt="" />
                                                                         </div>
 
                                                                         <div className="p-6">
