@@ -35,6 +35,9 @@ const movieSchema = new Schema({
                         type: [String],
                         default: [],
             },
+            image: {
+                        type: String
+            },
             showtimes: [showtimeSchema],
 }, { timestamps: true });
 
