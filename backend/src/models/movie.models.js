@@ -31,6 +31,9 @@ const movieSchema = new Schema({
                         required: true,
                         min: 1,
             },
+            image:{
+                        type:String,
+            },
             genre: {
                         type: [String],
                         default: [],
